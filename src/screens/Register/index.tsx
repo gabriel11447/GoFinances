@@ -9,7 +9,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import uuid from 'react-native-uuid';
-
+import { useTheme } from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
 
@@ -26,6 +26,7 @@ import {
   Fields,
   TransactionsTypes,
 } from './styles';
+
 import CategorySelect from '../CategorySelect';
 
 interface FormData {
@@ -50,6 +51,8 @@ export default function Register() {
     key: 'category',
     name: 'Categoria',
   });
+
+  const theme = useTheme();
 
   const navigation = useNavigation();
 
@@ -136,6 +139,7 @@ export default function Register() {
               name="name"
               control={control}
               placeholder="Nome"
+              placeholderTextColor={theme.darkColors.text_dark}
               autoCapitalize="sentences"
               autoCorrect={false}
               error={errors.name && errors.name.message}
@@ -144,6 +148,7 @@ export default function Register() {
               name="amount"
               control={control}
               placeholder="Preço"
+              placeholderTextColor={theme.darkColors.text_dark}
               keyboardType="numeric"
               error={errors.amount && errors.amount.message}
             />

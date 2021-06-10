@@ -7,7 +7,7 @@ interface TransactionProps {
 }
 
 export const Container = styled.View`
-  background-color: ${({ theme }) => theme.colors.shape};
+  background-color: ${({ theme }) => theme.darkColors.shape};
   border-radius: 5px;
   padding: 17px 24px;
   margin-bottom: 16px;
@@ -16,13 +16,14 @@ export const Container = styled.View`
 export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(14)}px;
+  color: ${({ theme }) => theme.darkColors.title};
 `;
 
 export const Amount = styled.Text<TransactionProps>`
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(20)}px;
   color: ${({ theme, type }) => 
-    type === 'positive' ? theme.colors.success : theme.colors.attention};
+    type === 'positive' ? theme.darkColors.success : theme.darkColors.attention};
   margin-top: 2px;
 `;
 
@@ -40,16 +41,16 @@ export const Category = styled.View`
 
 export const Icon = styled(Feather)`
   font-size: ${RFValue(20)}px;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.darkColors.text_dark};
 `;
 
 export const CategoryName = styled.Text`
   font-size: ${RFValue(14)}px;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.darkColors.text_dark};
   margin-left: 17px;
 `;
 
 export const Date = styled.Text`
   font-size: ${RFValue(14)}px;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.darkColors.text_dark};
 `;

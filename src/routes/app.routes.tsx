@@ -16,8 +16,10 @@ export default function AppRoutes() {
   return (
     <Navigator
       tabBarOptions={{
-        activeTintColor: theme.colors.secondary,
-        inactiveTintColor: theme.colors.text,
+        activeBackgroundColor: theme.darkColors.shape,
+        inactiveBackgroundColor: theme.darkColors.shape,
+        activeTintColor: theme.darkColors.secondary,
+        inactiveTintColor: theme.darkColors.text_dark,
         labelPosition: 'beside-icon',
         style: {
           paddingVertical: Platform.OS === 'ios' ? 20 : 0,

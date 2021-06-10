@@ -9,13 +9,13 @@ import { DataListProps } from '.';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.darkColors.background};
 `;
 
 export const Header = styled.View`
   width: 100%;
   height: ${RFPercentage(42)}px;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.darkColors.primary};
   justify-content: center;
   align-items: flex-start;
   flex-direction: row;
@@ -46,14 +46,14 @@ export const User = styled.View`
 `;
 
 export const UserGreeting = styled.Text`
-  color: ${({ theme }) => theme.colors.shape};
+  color: ${({ theme }) => theme.darkColors.title};
   font-size: ${RFValue(18)}px;
   font-family: ${({ theme }) => theme.fonts.regular};
 
 `;
 
 export const UserName = styled.Text`
-  color: ${({ theme }) => theme.colors.shape};
+  color: ${({ theme }) => theme.darkColors.title};
   font-size: ${RFValue(18)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
 `;
@@ -61,7 +61,7 @@ export const UserName = styled.Text`
 export const LogoutButton = styled(BorderlessButton)``;
 
 export const Icon = styled(Feather)`
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.darkColors.secondary};
   font-size: ${RFValue(24)}px; 
 `;
 
@@ -86,6 +86,7 @@ export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular};
   margin-top: 20px;
   margin-bottom: 16px;
+  color: ${({ theme }) => theme.darkColors.title};
 `;
 
 export const TransactionsList = styled(FlatList as new () => FlatList<DataListProps>)

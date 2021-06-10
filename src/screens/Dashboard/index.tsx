@@ -148,7 +148,7 @@ export default function Dashboard() {
         isLoading ? (
         <LoadContainer>
           <ActivityIndicator
-            color={theme.colors.primary}
+            color={theme.darkColors.primary}
             size="large"
           />
         </LoadContainer>

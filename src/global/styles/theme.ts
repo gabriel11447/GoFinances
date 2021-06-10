@@ -18,6 +18,26 @@ export default {
     background: '#F0F2F5',
   },
 
+  darkColors: {
+    primary: '#3C2C79',
+
+    secondary: '#E66300',
+    secondary_light: 'rgba(230, 99, 0, 0.3)',
+
+    success: '#12A152',
+    success_light: 'rgba(18, 161, 82, 0.5)',
+
+    attention: '#A01116',
+    attention_light: 'rgba(160, 17, 22, 0.5)',
+
+    
+    shape: '#272727',
+    title: '#FFFFFF',
+    text: '#F3F6FF',
+    text_dark: '#A6A6A6',
+    background: '#121212'
+  },
+
   fonts: {
     regular: 'Poppins_400Regular',
     medium: 'Poppins_500Medium',

@@ -8,7 +8,7 @@ interface TypeProps {
 
 export const Container = styled.View<TypeProps>`
   background-color: ${({ theme, type }) => 
-    type === 'total' ? theme.colors.secondary : theme.colors.shape};
+    type === 'total' ? theme.darkColors.secondary : theme.darkColors.shape};
   width: ${RFValue(300)}px;
   border-radius: 5px;
   padding: 19px 23px;
@@ -25,21 +25,21 @@ export const Title = styled.Text<TypeProps>`
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(14)}px;
   color: ${({ theme, type }) => 
-    type === 'total' ? theme.colors.shape : theme.colors.text_dark};
+    type === 'total' ? theme.darkColors.shape : theme.darkColors.title};
 `;
 
 export const Icon = styled(Feather)<TypeProps>`
   font-size: ${RFValue(40)}px;
   ${({ type }) => type === 'up' && css`
-    color: ${({ theme }) => theme.colors.success};
+    color: ${({ theme }) => theme.darkColors.success};
   `};
 
   ${({ type }) => type === 'down' && css`
-    color: ${({ theme }) => theme.colors.attention};
+    color: ${({ theme }) => theme.darkColors.attention};
   `};
 
   ${({ type }) => type === 'total' && css`
-    color: ${({ theme }) => theme.colors.shape};
+    color: ${({ theme }) => theme.darkColors.shape};
   `};  
 `;
 
@@ -49,7 +49,7 @@ export const Amount = styled.Text<TypeProps>`
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${RFValue(32)}px;
   color: ${({ theme, type }) => 
-    type === 'total' ? theme.colors.shape : theme.colors.text_dark};
+    type === 'total' ? theme.darkColors.shape : theme.darkColors.text};
   margin-top: 38px;
 `;
 
@@ -57,5 +57,5 @@ export const LastTransaction = styled.Text<TypeProps>`
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(12)}px;
   color: ${({ theme, type }) => 
-    type === 'total' ? theme.colors.shape : theme.colors.text};
+    type === 'total' ? theme.darkColors.shape : theme.darkColors.text_dark};
 `;

@@ -129,7 +129,7 @@ export default function Resume() {
         isLoading ? 
           <LoadContainer>
             <ActivityIndicator
-              color={theme.colors.primary}
+              color={theme.darkColors.primary}
               size="large"
             />
           </LoadContainer> : 
@@ -163,7 +163,7 @@ export default function Resume() {
                 labels: {
                   fontSize: RFValue(18),
                   fontWeight: 'bold',
-                  fill: theme.colors.shape,
+                  fill: theme.darkColors.title,
                 }
               }}
               labelRadius={50}
