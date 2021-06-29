@@ -53,7 +53,7 @@ export default function Resume() {
   const theme = useTheme();
   const { user } = useAuth();
 
-  function handleChangeDate(action: 'next' | 'prev') {    
+  function handleChangeDate(action: 'next' | 'prev') {
     if (action === 'next') {
       setSelectedDate(addMonths(selectedDate, 1));
     } else {
@@ -70,7 +70,7 @@ export default function Resume() {
     const responseFormatted = response ? JSON.parse(response) : [];
 
     const expensives = responseFormatted
-      .filter((expensive: TransactionData) => 
+      .filter((expensive: TransactionData) =>
         expensive.type === 'negative' &&
         new Date(expensive.date).getMonth() === selectedDate.getMonth() &&
         new Date(expensive.date).getFullYear() === selectedDate.getFullYear()
@@ -128,13 +128,13 @@ export default function Resume() {
         </Title>
       </Header>
       {
-        isLoading ? 
+        isLoading ?
           <LoadContainer>
             <ActivityIndicator
               color={theme.darkColors.primary}
               size="large"
             />
-          </LoadContainer> : 
+          </LoadContainer> :
           <Content
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{
@@ -143,47 +143,47 @@ export default function Resume() {
             }}
           >
 
-          <MonthSelect>
-            <MonthSelectButton onPress={() => handleChangeDate('prev')}>
-              <MonthSelectIcon name="chevron-left"/>
-            </MonthSelectButton>
+            <MonthSelect>
+              <MonthSelectButton onPress={() => handleChangeDate('prev')}>
+                <MonthSelectIcon name="chevron-left" />
+              </MonthSelectButton>
 
-            <Month>
-              {format(selectedDate, 'MMMM, yyyy', { locale: ptBR })}
-            </Month>
+              <Month>
+                {format(selectedDate, 'MMMM, yyyy', { locale: ptBR })}
+              </Month>
 
-            <MonthSelectButton onPress={() => handleChangeDate('next')}>
-              <MonthSelectIcon name="chevron-right"/>
-            </MonthSelectButton>
-          </MonthSelect>
+              <MonthSelectButton onPress={() => handleChangeDate('next')}>
+                <MonthSelectIcon name="chevron-right" />
+              </MonthSelectButton>
+            </MonthSelect>
 
-          <ChartContainer>
-            <VictoryPie
-              data={totalByCategories}
-              colorScale={totalByCategories.map(category => category.color)}
-              style={{
-                labels: {
-                  fontSize: RFValue(18),
-                  fontWeight: 'bold',
-                  fill: theme.darkColors.title,
-                }
-              }}
-              labelRadius={50}
-              x="percent"
-              y="total"
-            />
-          </ChartContainer>
-          {
-            totalByCategories.map(item => (
-              <HistoryCard
-                key={item.key}
-                title={item.name}
-                amount={item.totalFormatted}
-                color={item.color}
+            <ChartContainer>
+              <VictoryPie
+                data={totalByCategories}
+                colorScale={totalByCategories.map(category => category.color)}
+                style={{
+                  labels: {
+                    fontSize: RFValue(18),
+                    fontWeight: 'bold',
+                    fill: theme.darkColors.title,
+                  }
+                }}
+                labelRadius={50}
+                x="percent"
+                y="total"
               />
-            ))
-          }
-        </Content>
+            </ChartContainer>
+            {
+              totalByCategories.map(item => (
+                <HistoryCard
+                  key={item.key}
+                  title={item.name}
+                  amount={item.totalFormatted}
+                  color={item.color}
+                />
+              ))
+            }
+          </Content>
       }
     </Container>
   );

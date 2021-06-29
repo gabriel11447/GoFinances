@@ -1,4 +1,5 @@
 import React from 'react';
+import { RectButtonProps } from 'react-native-gesture-handler';
 
 import {
   Container,
@@ -6,17 +7,17 @@ import {
   Icon,
 } from './styles';
 
-interface Props {
+interface Props extends Omit<RectButtonProps, 'activeOpacity'> {
   title: string;
   onPress: () => void;
 }
 
 export default function CategorySelectButton({
   title,
-  onPress
+  ...rest
 } : Props) {
   return (
-    <Container onPress={onPress}>
+    <Container {...rest}>
       <Category>
         {title}
       </Category>

@@ -22,7 +22,7 @@ export const Title = styled.Text`
   font-size: ${RFValue(30)}px;
   color: ${({ theme }) => theme.darkColors.title};
   text-align: center;
-  margin-top: 45px;
+  margin-top: ${RFValue(45)}px;
 `;
 
 export const SignInTitle = styled.Text`
@@ -30,7 +30,7 @@ export const SignInTitle = styled.Text`
   font-size: ${RFValue(16)}px;
   color: ${({ theme }) => theme.darkColors.title};
   text-align: center;
-  margin-top: 80px;
+  margin-top: ${RFValue(80)}px;
   margin-bottom: 67px;
 `;
 

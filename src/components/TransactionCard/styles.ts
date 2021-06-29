@@ -22,7 +22,7 @@ export const Title = styled.Text`
 export const Amount = styled.Text<TransactionProps>`
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(20)}px;
-  color: ${({ theme, type }) => 
+  color: ${({ theme, type }) =>
     type === 'positive' ? theme.darkColors.success : theme.darkColors.attention};
   margin-top: 2px;
 `;

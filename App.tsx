@@ -9,7 +9,7 @@ import { ThemeProvider } from 'styled-components';
 
 import Routes from './src/routes';
 
-import { 
+import {
   useFonts,
   Poppins_400Regular,
   Poppins_500Medium,
@@ -36,7 +36,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar
-        barStyle="light-content"
+        barStyle="dark-content"
         backgroundColor={theme.darkColors.primary}
         translucent
       />

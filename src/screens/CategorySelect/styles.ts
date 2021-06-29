@@ -30,7 +30,7 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.darkColors.title};
 `;
 
-export const Category = styled(TouchableOpacity)<CategoryProps>`
+export const Category = styled(TouchableOpacity) <CategoryProps>`
   width: 100%;
   padding: ${RFValue(15)}px;
   flex-direction: row;

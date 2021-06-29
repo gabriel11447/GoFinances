@@ -30,7 +30,7 @@ export default function SignIn() {
     try {
       setIsLoading(true);
       return await signInWithGoogle();
-    } catch(error) {
+    } catch (error) {
       console.log(error);
       Alert.alert('Não foi possível conectar a conta Google.');
       setIsLoading(false);
@@ -41,7 +41,7 @@ export default function SignIn() {
     try {
       setIsLoading(true);
       return await signInWithApple();
-    } catch(error) {
+    } catch (error) {
       console.log(error);
       Alert.alert('Não foi possível conectar a conta Apple.');
       setIsLoading(false);
@@ -71,19 +71,19 @@ export default function SignIn() {
       <Footer>
         <FooterWrapper>
           <SignInSocialButton
-            title="Entra com Google"
+            title="Entrar com Google"
             svg={GoogleSvg}
             onPress={handleSignInWithGoogle}
           />
-          {Platform.OS === 'ios' && 
+          {Platform.OS === 'ios' &&
             <SignInSocialButton
-              title="Entra com Apple"
+              title="Entrar com Apple"
               svg={AppleSvg}
               onPress={handleSignInWithApple}
             />
           }
         </FooterWrapper>
-        { isLoading && 
+        {isLoading &&
           <ActivityIndicator
             color={theme.darkColors.shape}
             style={{ marginTop: 18 }}

@@ -9,10 +9,11 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import uuid from 'react-native-uuid';
-import { useTheme } from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../../hooks/auth';
+
+import theme from '../../global/styles/theme';
 
 import InputForm from '../../components/Form/InputForm';
 import Button from '../../components/Form/Button';
@@ -55,8 +56,6 @@ export default function Register() {
     name: 'Categoria',
   });
 
-  const theme = useTheme();
-
   const navigation = useNavigation();
 
   const {
@@ -84,7 +83,7 @@ export default function Register() {
     if (!transactionType) {
       return Alert.alert('Selecione o tipo da transação');
     }
-    
+
     if (category.key === 'category') {
       return Alert.alert('Selecione a categoria');
     }
@@ -120,7 +119,7 @@ export default function Register() {
 
       navigation.navigate('Listagem');
 
-    } catch(error) {
+    } catch (error) {
       console.log(error);
       Alert.alert("Não foi possível salvar");
     }
@@ -156,20 +155,21 @@ export default function Register() {
               error={errors.amount && errors.amount.message}
             />
             <TransactionsTypes>
-              <TransactionTypeButton 
-                type="up" 
+              <TransactionTypeButton
+                type="up"
                 title="Income"
                 onPress={() => handleTransactionTypeSelect('positive')}
                 isActive={transactionType === 'positive'}
-                />
-              <TransactionTypeButton 
-                type="down" 
+              />
+              <TransactionTypeButton
+                type="down"
                 title="Outcome"
                 onPress={() => handleTransactionTypeSelect('negative')}
                 isActive={transactionType === 'negative'}
-                />
+              />
             </TransactionsTypes>
-            <CategorySelectButton 
+            <CategorySelectButton
+              testID="button-category"
               title={category.name}
               onPress={handleOpenSelectCategoryModal}
             />
@@ -181,10 +181,11 @@ export default function Register() {
         </Form>
 
         <Modal
+          testID="modal-category"
           visible={categoryModalOpen}
           statusBarTranslucent
         >
-          <CategorySelect 
+          <CategorySelect
             category={category}
             setCategory={setCategory}
             closeSelectCategory={handleCloseSelectCategoryModal}

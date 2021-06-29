@@ -9,7 +9,7 @@ import { useAuth } from '../../hooks/auth';
 import HighlightCard from '../../components/HighlightCard';
 import TransactionCard, { TransactionCardProps } from '../../components/TransactionCard';
 
-import { 
+import {
   Container,
   Header,
   UserWrapper,
@@ -58,14 +58,14 @@ export default function Dashboard() {
 
     if (collectionFiltered.length === 0) {
       return 0;
-    } 
+    }
 
     const lastTransaction = new Date(
       Math.max.apply(Math, collectionFiltered
         .map(transaction => new Date(transaction.date).getTime()))
-  );
+    );
 
-  return `${lastTransaction.getDate()} de ${lastTransaction.toLocaleString('pt-BR', { month: 'long' })}`
+    return `${lastTransaction.getDate()} de ${lastTransaction.toLocaleString('pt-BR', { month: 'long' })}`
   }
 
   async function loadTransactions() {
@@ -107,45 +107,45 @@ export default function Dashboard() {
         }
       });
 
-      setTransactions(transactionsFormatted);
+    setTransactions(transactionsFormatted);
 
-      const lastTransactionEntires = getLastTransactionDate(transactions, 'positive');
-      const lastTransactionExpensives = getLastTransactionDate(transactions, 'negative');
-      const totalInterval = lastTransactionExpensives === 0 
-        ? 'Não há transações'
-        : `01 a ${lastTransactionExpensives}`;
-      
-      const total = entriesTotal - expensiveTotal;
+    const lastTransactionEntires = getLastTransactionDate(transactions, 'positive');
+    const lastTransactionExpensives = getLastTransactionDate(transactions, 'negative');
+    const totalInterval = lastTransactionExpensives === 0
+      ? 'Não há transações'
+      : `01 a ${lastTransactionExpensives}`;
 
-      setHighlightData({
-        entries: {
-          amount: entriesTotal.toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-          }),
-          lastTransaction: lastTransactionEntires === 0 
-            ? 'Não há transações'
-            : `Última entrada dia ${lastTransactionEntires}`
-        },
-        expensives: {
-          amount: expensiveTotal.toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-          }),
-          lastTransaction: lastTransactionExpensives === 0 
-            ? 'Não há transações'
-            : `Última saída dia ${lastTransactionExpensives}`,
-        },
-        total: {
-          amount: total.toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-          }),
-          lastTransaction: totalInterval,
-        }
-      });
+    const total = entriesTotal - expensiveTotal;
 
-      setIsLoading(false);
+    setHighlightData({
+      entries: {
+        amount: entriesTotal.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        }),
+        lastTransaction: lastTransactionEntires === 0
+          ? 'Não há transações'
+          : `Última entrada dia ${lastTransactionEntires}`
+      },
+      expensives: {
+        amount: expensiveTotal.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        }),
+        lastTransaction: lastTransactionExpensives === 0
+          ? 'Não há transações'
+          : `Última saída dia ${lastTransactionExpensives}`,
+      },
+      total: {
+        amount: total.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        }),
+        lastTransaction: totalInterval,
+      }
+    });
+
+    setIsLoading(false);
   }
 
   useEffect(() => {
@@ -160,63 +160,63 @@ export default function Dashboard() {
     <Container>
       {
         isLoading ? (
-        <LoadContainer>
-          <ActivityIndicator
-            color={theme.darkColors.primary}
-            size="large"
-          />
-        </LoadContainer>
+          <LoadContainer>
+            <ActivityIndicator
+              color={theme.darkColors.primary}
+              size="large"
+            />
+          </LoadContainer>
         ) : (
-        <>
-          <Header>
-            <UserWrapper>
-              <UserInfo>
-                <Photo
-                source={{ uri: user.photo }}
-                />
-                <User>
-                  <UserGreeting>Olá, </UserGreeting>
-                  <UserName>{user.name.split(' ')[0]}</UserName>
-                </User>
-              </UserInfo>
-              <LogoutButton onPress={signOut}>
-                <Icon name="power" />
-              </LogoutButton>
-            </UserWrapper>
-          </Header>
-          
-          <HighlightCards>
-            <HighlightCard
-              type="up"
-              title="Entradas"
-              amount={highlightData.entries.amount}
-              lastTransaction={highlightData.entries.lastTransaction}
-            />
-            <HighlightCard
-              type="down"
-              title="Saídas"
-              amount={highlightData.expensives.amount}
-              lastTransaction={highlightData.expensives.lastTransaction}
-            />
-            <HighlightCard
-              type="total"
-              title="Total"
-              amount={highlightData.total.amount}
-              lastTransaction={highlightData.total.lastTransaction}
-            />
-          </HighlightCards>
+          <>
+            <Header>
+              <UserWrapper>
+                <UserInfo>
+                  <Photo
+                    source={{ uri: user.photo }}
+                  />
+                  <User>
+                    <UserGreeting>Olá, </UserGreeting>
+                    <UserName>{user.name.split(' ')[0]}</UserName>
+                  </User>
+                </UserInfo>
+                <LogoutButton onPress={signOut}>
+                  <Icon name="power" />
+                </LogoutButton>
+              </UserWrapper>
+            </Header>
 
-          <Transactions>
-            <Title>Listagem</Title>
-            <TransactionsList 
-              data={transactions}
-              keyExtractor={item => item.id}
-              renderItem={({ item }) => <TransactionCard data={item} />}
-            />
-            
-          </Transactions>
-        </>
-      )}
+            <HighlightCards>
+              <HighlightCard
+                type="up"
+                title="Entradas"
+                amount={highlightData.entries.amount}
+                lastTransaction={highlightData.entries.lastTransaction}
+              />
+              <HighlightCard
+                type="down"
+                title="Saídas"
+                amount={highlightData.expensives.amount}
+                lastTransaction={highlightData.expensives.lastTransaction}
+              />
+              <HighlightCard
+                type="total"
+                title="Total"
+                amount={highlightData.total.amount}
+                lastTransaction={highlightData.total.lastTransaction}
+              />
+            </HighlightCards>
+
+            <Transactions>
+              <Title>Listagem</Title>
+              <TransactionsList
+                data={transactions}
+                keyExtractor={item => item.id}
+                renderItem={({ item }) => <TransactionCard data={item} />}
+              />
+
+            </Transactions>
+          </>
+        )}
     </Container>
   );
 }
