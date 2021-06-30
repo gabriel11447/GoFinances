@@ -6,4 +6,7 @@ module.exports = {
     "jest-styled-components",
   ],
   setupFiles: ["./node_modules/react-native-gesture-handler/jestSetup.js"],
+  collectCoverage: true,
+  collectCoverageFrom: ["src/**/*.tsx", "!src/**/*.spec.tsx"],
+  coverageReporters: ["lcov"],
 };
